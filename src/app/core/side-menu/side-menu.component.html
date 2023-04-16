@@ -1,0 +1,184 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      Check-in Equipment 
+    </h4>
+    <i class="fa-solid fa-xmark close-button" (click)="modal.dismiss('Cross click')"></i>
+
+  </div>
+  <div class="modal-body">
+    <form style="text-align: center; ">
+      <div class="form-group" style="">
+        <a class="form-groupText" for="dateOfBirth">
+          Scan a Particular Scope <br>
+          OR<br>
+          Key in Scope ID manually<br><br>
+        </a>
+        <div class="input-group">
+          <input id="dateOfBirth" class="form-control" placeholder="Awaiting Input..." (input)="submitForm($event , 'checkin')">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="successCheckIn();modal.close('Save click') ; ">
+      Submit
+    </button>
+  </div>
+</ng-template>
+
+<!--Check-out (1) Equipment -->
+<ng-template #content2 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title2">
+      Check-out Equipment
+    </h4>
+    <i class="fa-solid fa-xmark close-button" (click)="modal.dismiss('Cross click')"></i>
+  </div>
+  <div class="modal-body">
+    <form style="text-align: center; ">
+      <div class="form-group">
+        <a class="form-groupText" for="dateOfBirth">
+          Scan a Particular Scope <br>
+          OR<br>
+          Key in Scope ID manually<br><br>
+        </a>
+        <div class="input-group">
+          <input id="dateOfBirth2" class="form-control" placeholder="Awaiting Input..."
+          (input)="submitForm($event , 'checkout')"  />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" type="submit"
+      (click)="open(content1);modal.close('Save click') ; ">
+      Submit
+    </button>
+  </div>
+</ng-template>
+
+<!--Check-out (2) Equipment -->
+<ng-template #content1 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">
+      Check-out Equipment
+    </h4>
+    <i class="fa-solid fa-xmark close-button" (click)="modal.dismiss('Cross click')"></i>
+  </div>
+  <div class="modal-body">
+    <form style="text-align: center; ">
+      <div class="form-group">
+        <a class="form-groupText" for="dateOfBirth">
+          Check Out  <br>
+          Selected Scope ID: <span style="color: brown;">{{currentCheckOutScope}}</span><br/><br/>
+        </a>
+        <a class="form-groupText" for="dateOfBirth">
+          Please Select Usage:
+        </a>
+
+        <div class="btn-group" style="width:100%">
+          <button style="width:50%" class="btn btn-outline-dark calendar" type="button" (click)="selectCurrentStatus('Operations')">Operations</button>
+          <button style="width:50%" class="btn btn-outline-dark calendar" type="button" (click)="selectCurrentStatus('Quarantine')">Quarantine</button>
+        </div>
+        <div class="btn-group" style="width:100%">
+          <button style="width:50%" class="btn btn-outline-dark calendar" type="button" (click)="selectCurrentStatus('Sampling')">Sampling</button>
+          <button style="width:50%" class="btn btn-outline-dark calendar" type="button" (click)="selectCurrentStatus('Repair')">Repair</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="successCheckout();modal.close('Save click') ; ">
+      Submit
+    </button>
+  </div>
+</ng-template>
+
+<div class="overlay">
+  <ul id="icons">
+    <li><i id="menu-home-icon" class="fa-solid fa-house add-color"></i></li>
+    <!-- <li><i id="menu-status-icon" class="fa-solid fa-wrench"></i></li> -->
+    <li><i id="menu-inventory-icon" class="fa-solid fa-clipboard"></i></li>
+    <li><i id="menu-calendar-icon" class="fa-solid fa-calendar"></i></li>
+    <li><i class="fa-solid fa-right-to-bracket"></i></li>
+    <li><i class="fa-solid fa-right-to-bracket inverted"></i></li>
+  </ul>
+</div>
+<div id="menu">
+  <div class="menu-inner">
+    <ul>
+      <li routerLink="/home" id="menu-home" class="add-color"> <i class="fa-solid fa-house"
+          style="margin-right: 6px;"></i>Homepage
+
+        <div style="position: absolute;right: 16px;top:21px;   ">
+          <i class="fa-solid fa-circle-question question-icon" (mouseover)="showInstruction($event,true)"
+            (mouseout)="showInstruction($event,false)"></i>
+          <span class="instruction-container hide ">
+            <div class="box2 sb11 theme-shadow">Click to go to home.</div>
+          </span>
+        </div>
+      </li>
+      <!-- <li routerLink="/equipmentstatus" id="menu-status"><i class="fa-solid fa-wrench"
+          style="margin-right: 6px;"></i>Equipment Status
+        <div style="position: absolute;right: 16px;top:21px;   ">
+          <i class="fa-solid fa-circle-question question-icon" (mouseover)="showInstruction($event,true)"
+            (mouseout)="showInstruction($event,false)"></i>
+          <span class="instruction-container hide">
+            <div class="box2 sb11 theme-shadow">Click to go view a scope details.</div>
+          </span>
+        </div>
+      </li> -->
+
+      <li routerLink="/inventory" id="menu-inventory"><i class="fa-solid fa-clipboard"
+          style="margin-right: 6px;"></i>Inventory list
+        <div style="position: absolute;right: 16px;top:21px;   ">
+          <i class="fa-solid fa-circle-question question-icon" (mouseover)="showInstruction($event,true)"
+            (mouseout)="showInstruction($event,false)"></i>
+          <span class="instruction-container hide">
+            <div class="box2 sb11 theme-shadow">Click to view all scope in inventory list.</div>
+          </span>
+        </div>
+      </li>
+      <li routerLink="/calendar" id="menu-calendar"><i class="fa-solid fa-calendar"
+          style="margin-right: 6px;"></i>Calendar
+        <div style="position: absolute;right: 16px;top:21px;   ">
+          <i class="fa-solid fa-circle-question question-icon" (mouseover)="showInstruction($event,true)"
+            (mouseout)="showInstruction($event,false)"></i>
+          <span class="instruction-container hide">
+            <div class="box2 sb11 theme-shadow">Click to view calander to see which scope(s) had raised an alert.</div>
+          </span>
+        </div>
+      </li>
+      <li (click)="open(content)"><i class="fa-solid fa-right-to-bracket" style="margin-right: 6px;"></i>Check In
+        Equipment 
+        <div style="position: absolute;right: 16px;top:21px;   ">
+          <i class="fa-solid fa-circle-question question-icon" (mouseover)="showInstruction($event,true)"
+            (mouseout)="showInstruction($event,false)"></i>
+          <span class="instruction-container hide">
+            <div class="box2 sb11 theme-shadow ">Click to Check-In Scopes.</div>
+          </span>
+        </div>
+      </li>
+      <li (click)="open(content2)"><i class="fa-solid fa-right-to-bracket inverted" style="margin-right: 6px;"></i>Check
+        Out Equipment
+        <div style="position: absolute;right: 16px;top:21px;   ">
+          <i class="fa-solid fa-circle-question question-icon" (mouseover)="showInstruction($event,true)"
+            (mouseout)="showInstruction($event,false)"></i>
+          <span class="instruction-container hide">
+            <div class="box2 sb11 theme-shadow">Click to Check-Out Scopes.</div>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <svg version="1.1" id="blob" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <path id="blob-path" d="M60,500H0V0h60c0,0,20,172,20,250S60,900,60,500z" />
+  </svg>
+</div>
+<!-- <div id="hamburger" class="hamburger">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+</div> -->

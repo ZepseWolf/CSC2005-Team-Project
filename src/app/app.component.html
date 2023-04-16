@@ -1,0 +1,23 @@
+
+<app-feedback-popup></app-feedback-popup>
+<app-popout></app-popout>
+<div id="left-curtain">
+    <div id="loader"></div>
+    <div id="loader_fill"></div>
+</div>
+  
+  <div id="right-curtain">
+  </div>
+
+<div style="display:flex;background-color: #f6f6f2;z-index: -2;">
+    <div class="side-nav" *ngIf="_router.url !=='/login'">
+        <app-side-menu ></app-side-menu>
+    </div>
+    
+    <div class="router-outlet">
+        <div class="top-nav" *ngIf="_router.url !=='/login'">
+            <app-nav ></app-nav>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+</div>

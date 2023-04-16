@@ -1,0 +1,15 @@
+[{
+  "status": "REGULAR",
+  "checked": true
+},
+{
+  "status": "NOTREGULAR",
+  "checked": true
+},
+{
+  "status": "UNAVAILABLE",
+  "checked": true
+}
+
+
+]

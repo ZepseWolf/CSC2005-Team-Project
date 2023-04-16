@@ -1,0 +1,32 @@
+<div #popout class="popout-container">
+    <ng-container *ngIf="lock">
+        <div id="feedback-popout" class="popout theme-shadow">
+
+            <div style="text-align: center">Successful {{scopeDetails.actionStatus}}</div>
+            <table cellspacing="20" cellpadding="5">
+                <tbody>
+                    <tr>
+                        <th>Scope :</th>
+                        <td>{{scopeDetails.scopeId}}</td>
+                    </tr>
+                    <tr *ngIf="scopeDetails.scopeState">
+                        <th>Status :</th>
+                        <td>{{scopeDetails.scopeState}}</td>
+                    </tr>
+                    <tr>
+                        <th>Date :</th>
+                        <td>{{currentDate}}</td>
+                    </tr>
+                    <tr>
+                        <th>Time :</th>
+                        <td>{{currentTime}}</td>
+                    </tr>
+                    <tr>
+                        <th>Authorised by :</th>
+                        <td>John Doeh</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ng-container>
+</div>

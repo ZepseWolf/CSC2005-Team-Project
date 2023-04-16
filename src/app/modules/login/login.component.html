@@ -1,0 +1,45 @@
+
+<div class="login-form">
+  
+  <!-- <div class="background-box" border-top-left-radius:40px ;border-bottom-right-radius:40px;></div> -->
+  
+  <div style="display: flex;justify-content: center;align-items: center;width: 100%;" >
+    <div style="flex: 1 1 0; display: flex;justify-content: center;align-items: center;">
+      <div style="width:700px ;height: auto;">
+        <img src="assets/img/hospital-staff.png" style="max-width: 100%;max-height: 100%;">
+      </div>
+    </div>
+   
+  <div style="flex: 1 1 0;  display: flex;justify-content: center;align-items: center;">
+    <div class="theme-shadow" style="width:500px ;padding: 25px 50px;background-color:#f6f6f2 ; display: flex;border-radius:20px;justify-content: center;align-items: center;flex-direction: column;">
+      <!-- <img src="assets/img/background.png" style="position:absolute;top:0; max-width: 100%;opacity: 0.2;z-index: 0; max-height: 100%;"/> -->
+      <img src="assets/img/ttsh_brand.png"/>
+    
+      <div style="text-align: center;">
+        <div class="form-container theme-shadow">
+          <img src="assets/img/scanIcon_hover.png" class="scan-icon" (click)=autoFill()/>
+          <img src="assets/img/scanIcon.png" class="scan-icon hover-remove" (click)=autoFill()/>
+          <form>
+            <fieldset class='float-label-field ' >
+              <label for="idCard">ID card</label>
+              <input id="idCard" [value]="inputValue" style="background-color: #00000000;" type='text' (focus)='focusInput()' (blur)='blurInput($event)' (input)="changeInput($event)">
+            </fieldset>
+          </form>
+      
+        </div>
+        <div style="display:flex;align-items: center; justify-content: center;">
+          <button class="button-17 theme-shadow" role="button" [disabled]="buttonDisabled" routerLink="/home" >Start Now</button>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+   
+  </div>
+</div>
+<div>
+  <div class="instruction-container hide" >
+    <div class="box2 sb9 ">Use the attachment RFID scanner to scan your stuff pass!</div>
+  </div>
+  <i class="fa-solid fa-circle-question question-icon" (mouseover)="showInstruction($event,true)" (mouseout)="showInstruction($event,false)"></i>
+</div>

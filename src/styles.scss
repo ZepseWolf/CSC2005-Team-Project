@@ -1,0 +1,156 @@
+// /* You can add global styles to this file, and also import other style files */
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Helvetica, "Helvetica Neue", sans-serif; }
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+.hide{
+    display: none;
+
+}
+
+.unhide{
+    display: block;
+}
+
+.theme-shadow{
+    -webkit-box-shadow: 0px 1px 16px 3px rgba(0,0,0,0.2);
+    box-shadow: 0px 1px 16px 3px rgba(0,0,0,0.2);
+
+    &:hover{
+        animation: onHover 0.2s forwards ease;
+    }
+
+    &:not(:hover){
+        animation: onNotHover 0.2s forwards ease;
+    }
+}
+
+.theme-shadow:disabled{
+    -webkit-box-shadow: 0px 1px 16px 3px rgba(0,0,0,0.2);
+    box-shadow: 0px 1px 16px 3px rgba(0,0,0,0.2);
+    cursor: default;
+
+    &:hover{
+        animation:none;
+        cursor: default;
+    }
+
+    &:not(:hover){
+        animation: none;
+    }
+}
+
+@keyframes onHover {
+    0%{
+        -webkit-box-shadow: 0px 1px 16px 4px rgba(0,0,0,0.2);
+        box-shadow: 0px 1px 16px 4px rgba(0,0,0,0.2);
+    }
+    100%{
+        -webkit-box-shadow: 0px 1px 16px 4px rgba(0,0,0,0.3);
+        box-shadow: 0px 1px 16px 4px rgba(0,0,0,0.3);
+    }
+}
+
+@keyframes onNotHover {
+    0%{
+        -webkit-box-shadow: 0px 1px 16px 4px rgba(0,0,0,0.3);
+        box-shadow: 0px 1px 16px 4px rgba(0,0,0,0.3);
+    }
+    100%{
+        -webkit-box-shadow: 0px 1px 16px 4px rgba(0,0,0,0.2);
+        box-shadow: 0px 1px 16px 4px rgba(0,0,0,0.2);
+    }
+}
+
+@keyframes onNotHover {
+    0%{
+        -webkit-box-shadow: 0px 1px 16px 4px rgba(0,0,0,0.3);
+        box-shadow: 0px 1px 16px 4px rgba(0,0,0,0.3);
+    }
+    100%{
+        -webkit-box-shadow: 0px 1px 16px 4px rgba(0,0,0,0.2);
+        box-shadow: 0px 1px 16px 4px rgba(0,0,0,0.2);
+    }
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.fc-today-button{
+    text-transform: capitalize !important; 
+}
+
+.fc-daygrid-day-number {
+    color: #388087;
+    text-decoration: none !important;
+  }
+
+.fc-col-header-cell-cushion{
+    color: #388087;
+    text-decoration: none !important;
+}
+
+.fc-col-header-cell {
+    background-color: #388087;
+}
+
+.fc-col-header-cell-cushion {
+    color: #f6f6f2;
+    &:hover {
+        color: #f6f6f2;
+    }
+}
+
+.fc .fc-button-primary {
+    background-color: #388087 !important;
+    border-color: #388087 !important;
+    &:hover {
+        filter: brightness(0.8)
+    }
+}
+
+.fc-h-event {
+    background-color: #c2edce !important;
+    border-color: #c2edce !important;
+}
+
+
+
+.fc-event-title {
+    color: #388087 !important;
+}
+
+.btn-info {
+    background-color: #6fb3b8 !important;
+    border: none !important;
+    &:hover {
+        filter: brightness(0.8)
+    }
+}
+
+.iwasforcedtobyJingQuan {
+    &:hover {
+        filter: brightness(0.8)
+    }
+}
+// /* Importing Bootstrap SCSS file. */
+// //@import '~bootstrap/scss/bootstrap';
+
+

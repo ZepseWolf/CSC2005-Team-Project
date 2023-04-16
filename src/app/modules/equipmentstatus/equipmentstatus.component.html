@@ -1,0 +1,361 @@
+<div class = "equipmentStatusPage">
+    
+    <h1 id="header">Equipment Status</h1>
+    <div id ="subheader" class="theme-shadow">
+        <div><b>What are you looking for?</b></div>
+        <div><b>Category</b></div>
+        <div><b>Status</b></div>
+        <div></div>
+
+        <div class="searchInputWrapper">
+            <input class="searchInput  theme-shadow" (keydown) = "dropBoxSearch($event)" id = "userInput" type="text"  placeholder="&#xF002; Enter Scope ID To Search  " style="font-family:Arial, FontAwesome" />
+            <!-- <input class="searchInput  theme-shadow" (keydown) = "dropBoxSearch2($event)" id = "userInput" type="text"  placeholder="&#xF002; Enter To Search  " style="font-family:Arial, FontAwesome" /> -->
+            <div id="displayResults" class="theme-shadow"></div>
+            <div id="displayResults2" ></div>
+        </div> 
+
+        <!-- <div class = "dropdownBar theme-shadow"></div>
+        <div class = "dropdownBar theme-shadow"></div> -->
+        <input class="searchInput  theme-shadow" (keydown) = "dropBoxSearch($event)" id = "userInput" type="text"  placeholder="&#xF002; Enter Category To Search  " style="font-family:Arial, FontAwesome;margin-top: 10px;" />
+        <input class="searchInput  theme-shadow" (keydown) = "dropBoxSearch($event)" id = "userInput" type="text"  placeholder="&#xF002; Enter  Status To Search  " style="font-family:Arial, FontAwesome;margin-top: 10px;" />
+        <div class ="submitButton theme-shadow">Submit</div>
+    </div>
+    
+    <div class="scopeContainer theme-shadow" id="scopeTable">
+        <div class="freeze" style="position:sticky; top:0; background-color: #ededed; z-index:10">
+            <div>
+                <div style="font-size: 18px; margin: 5px 10px 5px 10px; padding: 10px 0px 10px 0px"><b>Scope History</b></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div id ="table" style="grid-template-columns: repeat(5, minmax(0, 2fr)); font-weight: bold; filter: brightness(0.95)">
+                <div>ID</div>
+                <div>Brand</div>
+                <!-- <div>Model No</div>
+                <div>Type</div> -->
+                <div>Serial No</div>
+                <div>Source</div>
+                <div>Current Location</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popUp" id="popup">
+        <div class="tablepopupHeader">
+            <p><b>Next Sampling Date: <span id="nextSamplingDate"></span></b></p>
+            <p id="closeButton" style="font-family:Arial, FontAwesome" (click)="closeButton()">&#x58;</p>
+        </div>
+
+        <div id="tablepopup" class="tablepopup" style="font-weight: bold; filter: brightness(0.95);height:450px;">
+            <div>History ID</div>
+            <div>Accession No</div>
+            <div>AER Model</div>
+            <div>AER Serial</div>
+            <div>Circulated By</div>
+            <div>Collected By</div>
+            <div>Date Filter Changed</div>
+            <div>Date Of Collection</div>
+            <div>Date Of Result</div>
+            <div>Detergent Lot No</div>
+            <div>Detergent Used</div>
+            <div>Disinfectant Changed</div>
+            <div>Disinfectant Lot No</div>
+            <div>Disinfectant Used</div>
+            <div>Fluid Actions</div>
+            <div>Fluid Analysis</div>
+            <div>Fluid Result</div>
+            <div>Quaratine</div>
+            <div>Remarks</div>
+            <div>Repeat Date</div>
+        </div>
+        
+    </div>
+</div>
+        <!-- <div class="scopeContainer">
+            <h3>Scope Information</h3>
+            <table style="width:90%;margin-left: 5%;margin-right: 5%;margin-top: 2%;">
+                
+                
+                <tr style="margin-top: 10%;">
+                    <td class = "headerTable">Brand</td>
+                    <td class = "headerTable">Model No</td>
+                    <td class = "headerTable">Type</td>
+                    <td class = "headerTable">Serial No</td>
+                    <td class = "headerTable">Source</td>
+                    <td class = "headerTable">Current Location</td>
+                </tr>
+                
+                <tr>
+                    <td class = "tableContents">
+                        Olympus<i class="fa-duotone fa-bolt-lightning" style="font-family:Arial, FontAwesome; color:rgb(245, 219, 75)"></i>
+                    </td>
+                    
+                    <td class = "tableContents">1234567</td>
+                    <td class = "tableContents">Haha</td>
+                    <td class = "tableContents">123456</td>
+                    <td class = "tableContents">Loan</td>
+                    <td class = "tableContents">In rack</td>
+                </tr>
+                
+            </table>
+
+            <h3>Last Sampling Details</h3>
+            <div class="scopeCardNew">
+                <p id = "scopeCardHeader">Personel Performed</p>
+                <tr style="text-align: center;font-weight: 500;">
+                    <td class = "tableContents">Washed By:</td>
+                    <td class = "tableContents">Collected By:</td>
+                    <td class = "tableContents">Circulated By:</td>
+                </tr>
+                <tr>
+                    <td class = "tableContents">
+                        <div id="profile-section">
+                            <div id="profile-image">
+                                <img src="assets/img/AvatarMaker.png"> 
+                            </div>
+                            <div class="image-description">
+                                <p><b>Washed By:</b></p>
+                                <p>John Doeh (1849224)</p>
+                                
+                            </div>
+                            
+                        </div>
+                    </td>
+                    <td class = "tableContents">
+                        <div id="profile-section">
+                            <div id="profile-image">
+                                <img src="assets/img/AvatarMaker.png"> 
+                            </div>
+                            <div class="image-description">
+                                <p><b>Washed By:</b></p>
+                                <p>John Doeh (1849224)</p>
+                                
+                            </div>
+                            
+                        </div>
+                    </td>
+                    <td class = "tableContents">
+                        <div id="profile-section">
+                            <div id="profile-image">
+                                <img src="assets/img/AvatarMaker.png"> 
+                            </div>
+                            <div class="image-description">
+                                <p><b>Washed By:</b></p>
+                                <p>John Doeh (1849224)</p>
+                                
+                            </div>
+                            
+                        </div>
+                    </td>
+                </tr>
+
+                <p id = "scopeCardHeader">Disinfectant Info</p>
+                <tr style="text-align: center;font-weight: 500;">
+                    <td class = "tableContents">Disinfectant Used:</td>
+                    <td class = "tableContents">Disinfectant Lot No:</td>
+                    <td class = "tableContents">Disinfectant changed:</td>
+                </tr>
+                <tr style="text-align: center;">
+                    <td class = "tableContents">
+                        Bleach
+                    </td>
+                    <td class = "tableContents">
+                        4
+                    </td>
+                    <td class = "tableContents">
+                        1/1/1111
+                    </td>
+                </tr>
+                <p id = "scopeCardHeader">AER Info Info</p>
+                <tr style="text-align: center;font-weight: 500;">
+                    <td class = "tableContents">AER Model:</td>
+                    <td class = "tableContents">AER Serial:</td>
+                    
+                </tr>
+                <tr style="text-align: center;">
+                    <td class = "tableContents">
+                        ABHASFJAFNAGASDGASGAS
+                    </td>
+                    <td class = "tableContents">
+                        ABHASFJAFNAGASDGASGAS
+                    </td>
+             
+                </tr>
+            </div>
+            
+            <div class="scopeCard">
+                <p id = "scopeCardHeader">Sampling Dates</p>
+                <p id = "scopeCardHeader">Date of collection</p>
+                <div class="calendar">
+                    <div class="calendar__date">
+                      <div class="calendar__day">M</div>
+                      <div class="calendar__day">T</div>
+                      <div class="calendar__day">W</div>
+                      <div class="calendar__day">T</div>
+                      <div class="calendar__day">F</div>
+                      <div class="calendar__day">S</div>
+                      <div class="calendar__day">S</div>
+                      <div class="calendar__number"></div>
+                      <div class="calendar__number"></div>
+                      <div class="calendar__number"></div>
+                      <div class="calendar__number">1</div>
+                      <div class="calendar__number">2</div>
+                      <div class="calendar__number">3</div>
+                      <div class="calendar__number">4</div>
+                      <div class="calendar__number">5</div>
+                      <div class="calendar__number">6</div>
+                      <div class="calendar__number">7</div>
+                      <div class="calendar__number">8</div>
+                      <div class="calendar__number">9</div>
+                      <div class="calendar__number">10</div>
+                      <div class="calendar__number">11</div>
+                      <div class="calendar__number">12</div>
+                      <div class="calendar__number">13</div>
+                      <div class="calendar__number">14</div>
+                      <div class="calendar__number">15</div>
+                      <div class="calendar__number">16</div>
+                      <div class="calendar__number">17</div>
+                      <div class="calendar__number calendar__number--current">18</div>
+                      <div class="calendar__number">19</div>
+                      <div class="calendar__number">20</div>
+                      <div class="calendar__number">21</div>
+                      <div class="calendar__number">22</div>
+                      <div class="calendar__number">23</div>
+                      <div class="calendar__number">24</div>
+                      <div class="calendar__number">25</div>
+                      <div class="calendar__number">26</div>
+                      <div class="calendar__number">27</div>
+                      <div class="calendar__number">28</div>
+                      <div class="calendar__number">29</div>
+                      <div class="calendar__number">30</div>
+                    </div>
+                  </div>
+            </div>
+            
+            <div id="buttonHistory" (click)="popUp()">
+                Click to view full history
+            </div>
+        </div> -->
+        
+
+
+<!-- 
+<table class = "historyTable" id ="historyTable">
+<i style="font-family:Arial, FontAwesome" class="fa-regular fa-xmark exit" (click)="popUp()"></i>
+<tbody>
+<tr style="background-color: #388087;">
+    <td>No.</td>
+    <td>Month</td>
+    <td>Date Of Collection</td>
+    <td>Accession No.</td>
+    <td>Washed By</td>
+    <td>Collected By</td>
+    <td>Circulated By</td>
+    <td>AER Model</td>
+    <td>AER Serial</td>
+    <td>Disinfectant Used:</td>
+    <td>Disinfectant Lot No:</td>
+    <td>Disinfectant changed:</td>
+</tr>
+<tr>
+    <td>1</td>
+    <td>JAN</td>
+    <td>1/1/1111</td>
+    <td>1</td>
+    <td>Obama</td>
+    <td>Pablo Escobar</td>
+    <td>John Doeh</td>
+    <td>678678678</td>
+    <td>67867868</td>
+    <td>Bleach</td>
+    <td>4</td>
+    <td>1/1/1111</td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>FEB</td>
+    <td>2/2/2222</td>
+    <td>2</td>
+    <td>Trump</td>
+    <td>Three</td>
+    <td>Thirty</td>
+    <td>6786787</td>
+    <td>678678</td>
+    <td>Bleach</td>
+    <td>4</td>
+    <td>1/1/1111</td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>MAR</td>
+    <td>3/3/3333</td>
+    <td>3</td>
+    <td>Donald</td>
+    <td>Joseph</td>
+    <td>Kim</td>
+    <td>678678</td>
+    <td>678678</td>
+    <td>Bleach</td>
+    <td>4</td>
+    <td>1/1/1111</td>
+</tr>
+<tr>
+    <td>4</td>
+    <td>APR</td>
+    <td>4/4/4444</td>
+    <td>4</td>
+    <td>John Doeh</td>
+    <td>Zi quan</td>
+    <td>Jing hao</td>
+    <td>12345</td>
+    <td>12345</td>
+    <td>Bleach</td>
+    <td>4</td>
+    <td>1/1/1111</td>
+</tr>
+<tr>
+    <td>5</td>
+    <td>APR</td>
+    <td>4/4/4444</td>
+    <td>5</td>
+    <td>Tim</td>
+    <td>Kai lin</td>
+    <td>Yi Chong</td>
+    <td>678678678</td>
+    <td>345345</td>
+    <td>Bleach</td>
+    <td>4</td>
+    <td>1/1/1111</td>
+</tr>
+<tr>
+    <td>6</td>
+    <td>MAY</td>
+    <td>5/5/5555</td>
+    <td>6</td>
+    <td>Rucheal</td>
+    <td>Alex</td>
+    <td>Garsia</td>
+    <td>345345345</td>
+    <td>123123</td>
+    <td>Bleach</td>
+    <td>4</td>
+    <td>1/1/1111</td>
+</tr>
+<tr>
+    <td>7</td>
+    <td>JUN</td>
+    <td>6/6/6666</td>
+    <td>7</td>
+    <td>Glen Tik</td>
+    <td>niece tok</td>
+    <td>Tom</td>
+    <td>123123123</td>
+    <td>123123</td>
+    <td>Bleach</td>
+    <td>4</td>
+    <td>1/1/1111</td>
+</tr>
+
+</tbody>
+</table>  -->

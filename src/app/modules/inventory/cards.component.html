@@ -1,0 +1,191 @@
+<div class="search-hero theme-shadow" style="margin: 10px 0px 10px 0px">
+  <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+    placeholder="&#61442; Search for scope or scope ID" style="font-family:Arial, FontAwesome" >
+</div>
+<!-- <div> -->
+<table class="table table-striped" style="display: block;height: 65vh;overflow: auto;width: 100%;">
+  <thead>
+    <tr style="position: sticky; top: 0;box-shadow: 0px 1px 0px 0px #388087;">
+      <th style="background-color: #f6f6f2; padding: 8px 8px 8px 8px; width: 156px ;">Scope ID
+      </th>
+      <th style="background-color: #f6f6f2; padding: 8px 8px 8px 8px; width: 156px ">Scope Type
+      </th>
+      <th style="background-color: #f6f6f2;  padding: 8px 8px 8px 8px; width: 306px ">Scheduled
+        Sampling date</th>
+      <th style="background-color: #f6f6f2; padding: 8px 8px 8px 8px; width: 156px ">Status</th>
+      <th style="background-color: #f6f6f2; padding: 8px 8px 8px 8px; width: 156px ">Brand</th>
+      <th style="background-color: #f6f6f2; padding: 8px 8px 8px 8px; width: 156px ">Model No
+      </th>
+      <th style="background-color: #f6f6f2; padding: 8px 8px 8px 8px; width: 156px">Current Location</th>
+      <th style="background-color: #f6f6f2; padding: 8px 8px 8px 8px; width: 156px "></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="details" *ngFor="let item of cardsView | filter:searchText ; index as i" style="vertical-align: middle">
+      <td>{{ item.id }}</td>
+      <td>{{ item.type }}</td>
+      <td>{{ item.samplingDate }}</td>
+      <td>{{ item.status }}</td>
+      <td>{{ item.brand }}</td>
+      <td>{{ item.modelNo }}</td>
+      <td>{{ inShelf(item.inShelf) }}</td>
+      <td><button class="btn btn-info" (click)="open(content,cards[i].history);">History</button></td>
+    </tr>
+  </tbody>
+</table>
+<!-- </div> -->
+
+<ng-template #content let-modal>
+
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      History
+    </h4>
+    <!-- <button type="button" class="close"
+                aria-label="Close" (click)=
+                "modal.dismiss('Cross click')">
+            <span aria-hidden="true">
+                ×
+            </span>
+        </button> -->
+    <i class="fa-solid fa-xmark close-button" style="cursor: pointer;" (click)="modal.dismiss('Cross click')"></i>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <table class="table table-striped" id="historytable" style="height: 65vh">
+        <thead>
+          <tr>
+            <th>Date of Collection</th>
+            <th>Accession No</th>
+            <th>Aer Model</th>
+            <th>Aer Serial</th>
+            <th>Collected by</th>
+            <th>Circulated by</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="details shadow-popout" style="cursor: pointer;" *ngFor="let item of selectedhistorydata.slice().reverse()" (click)="opendetails(content2,item);">
+            <td>{{ item.dateOfCollection }}</td>
+            <td>{{ item.accessionNo }}</td>
+            <td>{{ item.aerModel }}</td>
+            <td>{{ item.aerSerial }}</td>
+            <td>{{ item.collectedBy }}</td>
+            <td>{{ item.circulatedBy }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('close')">
+      close
+    </button>
+  </div>
+</ng-template>
+
+
+<ng-template #content2 let-modal>
+
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      History
+    </h4>
+    <!-- <button type="button" class="close"
+              aria-label="Close" (click)=
+              "modal.dismiss('Cross click')">
+          <span aria-hidden="true">
+              ×
+          </span>
+      </button> -->
+    <i class="fa-solid fa-xmark close-button" style="cursor: pointer;" (click)="modal.dismiss('Cross click')"></i>
+  </div>
+  <div class="modal-body">
+    <table class="table table-striped" id="historytable">
+      <tbody class="single-view">
+        <tr >
+          <td>Date Of Collection</td>
+          <td>{{ items.dateOfCollection }}</td>
+        </tr>
+        <tr>
+          <td>Accession No</td>
+          <td>{{ items.accessionNo }}</td>
+        </tr>
+        <tr>
+          <td>Aer Model</td>
+          <td>{{ items.aerModel }}</td>
+        </tr>
+        <tr>
+          <td>Aer Serial</td>
+          <td>{{ items.aerSerial }}</td>
+        </tr>
+        <tr>
+          <td>Collected By</td>
+          <td>{{ items.collectedBy }}</td>
+        </tr>
+        <tr>
+          <td>Circulated By</td>
+          <td>{{ items.circulatedBy }}</td>
+        </tr>
+        <tr>
+          <td>Disinfectant Used</td>
+          <td>{{ items.disinfectantUsed }}</td>
+        </tr>
+        <tr>
+          <td>Disinfectant Lot Number</td>
+          <td>{{ items.disinfectantLotNo }}</td>
+        </tr>
+        <tr>
+          <td>Disinfectant Changed</td>
+          <td>{{ items.disinfectantChanged }}</td>
+        </tr>
+        <tr>
+          <td>Detergent Used</td>
+          <td>{{ items.detergentUsed }}</td>
+        </tr>
+        <tr>
+          <td>Detergent Lot No</td>
+          <td>{{ items.detergentLotNo }}</td>
+        </tr>
+        <tr>
+          <td>Date Filter Changed</td>
+          <td>{{ items.dateFilterChanged }}</td>
+        </tr>
+        <tr>
+          <td>Date Of Result</td>
+          <td>{{ items.dateOfResult }}</td>
+        </tr>
+        <tr>
+          <td>Fluid Result</td>
+          <td>{{ items.fluidResult }}</td>
+        </tr>
+        <tr>
+          <td>Fluid Analysis</td>
+          <td>{{ items.fluidAnalysis }}</td>
+        </tr>
+        <tr>
+          <td>Fluid Actions</td>
+          <td>{{ items.fluidActions }}</td>
+        </tr>
+        <tr>
+          <td>Quaratine</td>
+          <td>{{ items.quaratine }}</td>
+        </tr>
+        <tr>
+          <td>Repeat Date</td>
+          <td>{{ items.repeatDate }}</td>
+        </tr>
+        <tr>
+          <td>Remarks</td>
+          <td>{{ items.remarks }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('close')">
+      close
+    </button>
+  </div>
+</ng-template>

@@ -1,0 +1,43 @@
+.myCustomModalClass .modal-dialog {
+    max-width: calc(100vw - 500px);
+  }
+
+
+  table {
+    border-collapse: collapse;
+    // display: block;
+    display: table;
+    width: 100%;
+  }
+
+  #historytable{
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  p{
+    margin : 0; padding-top:0;
+  }
+
+.details:hover {background-color: rgb(223, 255, 231);}
+
+.shadow-popout {
+  &:hover{
+    animation: onHover 0.2s forwards ease;
+  }
+
+  // &:not(:hover){
+  //     animation: onNotHover 0.2s forwards ease;
+  // }
+}
+
+.single-view tr td:first-child{
+  font-weight: 500;
+}

@@ -1,0 +1,13 @@
+<div *ngFor="let option of status">
+    <label>
+      <input
+        type="checkbox"
+        name="options"
+        value="{{ option.status }}"
+        [(ngModel)]="option.checked"
+        (change)="onFilter()"
+      />
+      {{ option.status }}
+    </label>
+  </div>
+  

@@ -1,0 +1,20 @@
+<div class="page" style="width: 100%; height: calc(100vh - 62px);display: flex; flex-direction: column;align-items: center;">
+
+<div id="header" style="">Inventory list</div>
+<div class="top-bar" style="display: flex;flex-direction: column;">
+  <div class="" style=" margin-bottom: 1%;">
+  <!-- <div class = "" > -->
+    <sorting
+      style=""
+      (sort)="onSort($event)"
+    ></sorting>
+    <sortingDate
+      style=""
+      (sort)="onSortDate($event)"
+    ></sortingDate>
+  <!-- </div> -->
+    
+    <!-- <filter style="display: flex;flex-direction: row;gap: 16px;right: 20px;position: relative;" (filter)="onFilter($event)"></filter> -->
+  </div>
+  <cards style="width: 100%;" [cards]="filteredCards"></cards>
+</div>
