@@ -33,7 +33,15 @@ import { environment } from 'src/environments/environment';
     NavComponent
   ],
   imports: [
-    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirebaseApp(() => initializeApp({
+      apiKey: environment.apiKey,
+      authDomain: environment.authDomain,
+      databaseURL: environment.databaseURL,
+      projectId: environment.projectId,
+      storageBucket: environment.storageBucket,
+      messagingSenderId: environment.messagingSenderId,
+      appId: environment.appId
+    })),
     provideFirestore(() => getFirestore()),
     BrowserModule,
     AppRoutingModule,
